@@ -39,15 +39,16 @@ function _getResponse(element, temperatureType) {
 }
 
 function _checkCriteria(current, prev, next, temperatureType) {
-  if ( (_isTemp(current, temperatureType)) && (_isCheckFootAttire(current, prev, next, temperatureType)) && (_isCheckHeadAttire(current, prev, next, temperatureType)) && (_isLeavingHouse(current, prev, next, temperatureType)) ){
+  if ((_isTemp(current, temperatureType)) &&
+       (_isCheckFootAttire(current, prev, next, temperatureType)) &&
+       (_isCheckHeadAttire(current, prev, next, temperatureType)) &&
+       (_isLeavingHouse(current, prev, next, temperatureType))) {
     return true;
   } else {
     console.log('_isTemp = ' + _isTemp(current, temperatureType));
     console.log('_isFootCheckAttire = ' + _isCheckFootAttire(current, prev, next, temperatureType));
     console.log('_isHeadCheckAttire = ' + _isCheckHeadAttire(current, prev, next, temperatureType));
-    console.log('_isLeavingHouse = ' + _isLeavingHouse(current, prev, next, temperatureType) );
-    return false;
-    //stop processing and return error array
+    console.log('_isLeavingHouse = ' + _isLeavingHouse(current, prev, next, temperatureType));
   }
 }
 
@@ -60,9 +61,13 @@ function _isTemp(current, temperatureType) {
 }
 
 function _isCheckFootAttire(current, prev, next, temperatureType) {
-  if ( (temperatureType === data.weather.cold) && (_getResponse(current, temperatureType) === 'boots') && (_getResponse(prev, temperatureType) !== 'socks') ) {
+  if ((temperatureType === data.weather.cold) &&
+       (_getResponse(current, temperatureType) === 'boots') &&
+       (_getResponse(prev, temperatureType) !== 'socks')) {
     return false;
-  } else if ( (temperatureType === data.weather.cold) && (_getResponse(current, temperatureType) === 'boots') && (_getResponse(prev, temperatureType) !== 'pants') ) {
+  } else if ((temperatureType === data.weather.cold) &&
+              (_getResponse(current, temperatureType) === 'boots') &&
+              (_getResponse(prev, temperatureType) !== 'pants')) {
     return false;
   }
   return true;
@@ -70,9 +75,13 @@ function _isCheckFootAttire(current, prev, next, temperatureType) {
 }
 
 function _isCheckHeadAttire(current, prev, next, temperatureType) {
-  if ( (temperatureType === data.weather.hot) && (_getResponse(current, temperatureType) === 'sun visor') && (_getResponse(prev, temperatureType) !== 't-shirt') ) {
+  if ((temperatureType === data.weather.hot) &&
+       (_getResponse(current, temperatureType) === 'sun visor') &&
+       (_getResponse(prev, temperatureType) !== 't-shirt')) {
     return false;
-  } else if ( (temperatureType === data.weather.cold) && (_getResponse(current, temperatureType) === 'hat') && (_getResponse(prev, temperatureType) !== 'shirt') ) {
+  } else if ((temperatureType === data.weather.cold) &&
+              (_getResponse(current, temperatureType) === 'hat') &&
+              (_getResponse(prev, temperatureType) !== 'shirt')) {
     return false;
   }
   return true;
@@ -80,7 +89,7 @@ function _isCheckHeadAttire(current, prev, next, temperatureType) {
 }
 
 function _isLeavingHouse(current, prev, next, temperatureType) {
-  if (_getResponse(current, temperatureType) === _getResponse(prev, temperatureType) ) {
+  if (_getResponse(current, temperatureType) === _getResponse(prev, temperatureType)) {
     return false;
   }
   return true;

@@ -1,7 +1,7 @@
 /* jshint -W117, -W030 */
 describe('DashboardController', function() {
   var controller;
-  var people = mockData.getMockPeople();
+  var people = mockData.getMockAttire();
 
   beforeEach(function() {
     bard.appModule('app.dashboard');
@@ -9,7 +9,7 @@ describe('DashboardController', function() {
   });
 
   beforeEach(function() {
-    sinon.stub(dataservice, 'getPeople').returns($q.when(people));
+    sinon.stub(dataservice, 'getAttire').returns($q.when(people));
     controller = $controller('DashboardController');
     $rootScope.$apply();
   });
@@ -32,14 +32,6 @@ describe('DashboardController', function() {
 
       it('should have news', function() {
         expect(controller.news).to.not.be.empty;
-      });
-
-      it('should have at least 1 person', function() {
-        expect(controller.people).to.have.length.above(0);
-      });
-
-      it('should have people count of 5', function() {
-        expect(controller.people).to.have.length(7);
       });
     });
   });

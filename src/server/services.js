@@ -16,25 +16,36 @@ function attire(req, res, next) {
   var temperature = '';
   var attire = '';
   var error = [];
+  var abort = false;
 
   inOutfit = req.body.outfit;
   try {
-    if (inOutfit[0].toLowerCase() === data.weather.hot || inOutfit[0].toLowerCase() === data.weather.cold) {
+    if (inOutfit[0].toLowerCase() === data.weather.hot ||
+        inOutfit[0].toLowerCase() === data.weather.cold) {
       temperature = inOutfit[0].toLowerCase();
       responses.push(inOutfit[0].toUpperCase());
       if (helpers._initialState(inOutfit[1])) {
-        for (i = 1; i <= inOutfit.length - 1; i++) {
-          if (helpers._checkCriteria(inOutfit[i], inOutfit[i-1], inOutfit[i+1], temperature) && helpers._getResponse(inOutfit[inOutfit.length - 1], temperature) === 'leaving house') {
+        for (i = 1; i <= inOutfit.length - 1 && !abort; i++) {
+          if (helpers._checkCriteria(inOutfit[i], inOutfit[i-1], inOutfit[i+1], temperature) &&
+             (helpers._getResponse(inOutfit[inOutfit.length - 1],
+                temperature) === 'leaving house')) {
             attire = helpers._getResponse(inOutfit[i], temperature);
             responses.push(attire);
+          } else {
+            responses.push('fail');
+            abort = true;
           }
         }
-        outfit = { data: responses };
-        res.status(200).send(outfit);
+      } else {
+        responses.push('fail');
       }
+      outfit = { data: responses };
+      console.log(outfit);
+      res.status(200).send(outfit);
     }
   } catch (e) {
     console.log(e);
+    four0four.send404(req, res, 'NOT FOUND') ;
   }
 }
 

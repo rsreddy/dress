@@ -1,7 +1,7 @@
 /* jshint -W079 */
 var mockData = (function() {
   return {
-    getMockPeople: getMockPeople,
+    getMockAttire: getMockAttire,
     getMockStates: getMockStates
   };
 
@@ -22,7 +22,7 @@ var mockData = (function() {
     ];
   }
 
-  function getMockPeople() {
+  function getMockAttire() {
     return [
       { firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida' },
       { firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California' },

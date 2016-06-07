@@ -41,11 +41,11 @@
         "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
         "&=", "|=", "^=", "+=",
 
-        "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+        "*", "/", "%", "<<", ">>", ">>>", "&",
         "|", "^", "&&", "||", "===", "==", ">=",
         "<=", "<", ">", "!=", "!=="
     ],
-    "requireSpaceAfterBinaryOperators": true,
+    "requireSpaceAfterBinaryOperators": false,
     "requireSpacesInConditionalExpression": true,
     "requireSpaceBeforeBlockStatements": true,
     "requireLineFeedAtFileEnd": true,
