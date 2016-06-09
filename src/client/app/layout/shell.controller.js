@@ -14,8 +14,8 @@
     $rootScope.showSplash = true;
     vm.navline = {
       title: config.appTitle,
-      text: 'Created by John Papa',
-      link: 'http://twitter.com/john_papa'
+      text: 'Yeoman Generated Hottowel App - Edited by RSREDDY',
+      link: 'https://github.com/johnpapa/generator-hottowel'
     };
 
     activate();

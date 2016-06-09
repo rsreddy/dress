@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header high">
+<div class="header low">
     <h1>Code coverage report for <span class="entity">app/dashboard/dashboard.controller.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(22 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">25% <small>(7 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">100% <small>(8 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(22 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">12.5% <small>(1 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">25% <small>(7 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">app/dashboard/</a> &#187; dashboard.controller.js</div>
@@ -68,7 +68,17 @@
 41
 42
 43
-44</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -78,36 +88,46 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,39 +138,49 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 &nbsp;
-  DashboardController.$inject = ['$q', 'dataservice', 'logger'];
+  DashboardController.$inject = ['$q', '$scope', 'dataservice', 'logger'];
   /* @ngInject */
-  function DashboardController($q, dataservice, logger) {
-    var vm = this;
-    vm.news = {
+<span class="fstat-no" title="function not covered" >  function DashboardController($q, $scope, dataservice, logger) {</span>
+<span class="cstat-no" title="statement not covered" >    var vm = this;</span>
+<span class="cstat-no" title="statement not covered" >    vm.news = {</span>
       title: 'mausam',
       description: 'Hot Towel Angular is a SPA template for Angular developers.'
     };
-    vm.messageCount = 0;
-    vm.attire = [];
-    vm.title = 'Dashboard';
+<span class="cstat-no" title="statement not covered" >    vm.title = 'Dashboard';</span>
+<span class="cstat-no" title="statement not covered" >    vm.formData = {</span>
+      temperature: '',
+      postOpts: [],
+      results: []
+    };
+<span class="cstat-no" title="statement not covered" >    vm.setSelected = setSelected;</span>
+<span class="cstat-no" title="statement not covered" >    vm.attire = [];</span>
+<span class="cstat-no" title="statement not covered" >    vm.submit = submit;</span>
 &nbsp;
-    activate();
+<span class="cstat-no" title="statement not covered" >    activate();</span>
 &nbsp;
-    function activate() {
-      var promises = [getMessageCount(), getAttire()];
-      return $q.all(promises).then(function() {
-        logger.info('Activated Dashboard View');
+<span class="fstat-no" title="function not covered" >    function activate() {</span>
+<span class="cstat-no" title="statement not covered" >      logger.info('Activated Dashboard View');</span>
+<span class="cstat-no" title="statement not covered" >      $scope.$watch('formData.temperature', <span class="fstat-no" title="function not covered" >function(value) {</span></span>
+<span class="cstat-no" title="statement not covered" >        vm.formData.temperature = value;</span>
+<span class="cstat-no" title="statement not covered" >        return dataservice.getAttire(value).then(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >          vm.options = data;</span>
+<span class="cstat-no" title="statement not covered" >          return vm.options;</span>
+        });
       });
     }
 &nbsp;
-    function getMessageCount() {
-      return dataservice.getMessageCount().then(function(data) {
-        vm.messageCount = data;
-        return vm.messageCount;
+<span class="fstat-no" title="function not covered" >    function submit() {</span>
+<span class="cstat-no" title="statement not covered" >      vm.attire.unshift(vm.formData.temperature);</span>
+<span class="cstat-no" title="statement not covered" >      return dataservice.results({outfit : vm.attire}).then(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >        vm.formData.results = data.data;</span>
+<span class="cstat-no" title="statement not covered" >        return vm.formData.results;</span>
       });
     }
 &nbsp;
-    function getAttire() {
-      return dataservice.getAttire().then(function(data) {
-        vm.attire = data;
-        return vm.attire;
-      });
+<span class="fstat-no" title="function not covered" >    function setSelected(item) {</span>
+<span class="cstat-no" title="statement not covered" >      vm.formData.postOpts.push(item);</span>
+<span class="cstat-no" title="statement not covered" >      vm.attire = vm.formData.postOpts;</span>
+<span class="cstat-no" title="statement not covered" >      logger.info(item + ' added to array!');</span>
     }
   }
 })();
@@ -159,7 +189,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 07 2016 18:10:24 GMT-0500 (CDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 09 2016 01:28:37 GMT-0500 (CDT)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

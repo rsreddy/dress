@@ -5,39 +5,49 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$q', 'dataservice', 'logger'];
+  DashboardController.$inject = ['$q', '$scope', 'dataservice', 'logger'];
   /* @ngInject */
-  function DashboardController($q, dataservice, logger) {
+  function DashboardController($q, $scope, dataservice, logger) {
     var vm = this;
     vm.news = {
       title: 'mausam',
       description: 'Hot Towel Angular is a SPA template for Angular developers.'
     };
-    vm.messageCount = 0;
-    vm.attire = [];
     vm.title = 'Dashboard';
+    vm.formData = {
+      temperature: '',
+      postOpts: [],
+      results: []
+    };
+    vm.setSelected = setSelected;
+    vm.attire = [];
+    vm.submit = submit;
 
     activate();
 
     function activate() {
-      var promises = [getMessageCount(), getAttire()];
-      return $q.all(promises).then(function() {
-        logger.info('Activated Dashboard View');
+      logger.info('Activated Dashboard View');
+      $scope.$watch('formData.temperature', function(value) {
+        vm.formData.temperature = value;
+        return dataservice.getAttire(value).then(function(data) {
+          vm.options = data;
+          return vm.options;
+        });
       });
     }
 
-    function getMessageCount() {
-      return dataservice.getMessageCount().then(function(data) {
-        vm.messageCount = data;
-        return vm.messageCount;
+    function submit() {
+      vm.attire.unshift(vm.formData.temperature);
+      return dataservice.results({outfit : vm.attire}).then(function(data) {
+        vm.formData.results = data.data;
+        return vm.formData.results;
       });
     }
 
-    function getAttire() {
-      return dataservice.getAttire().then(function(data) {
-        vm.attire = data;
-        return vm.attire;
-      });
+    function setSelected(item) {
+      vm.formData.postOpts.push(item);
+      vm.attire = vm.formData.postOpts;
+      logger.info(item + ' added to array!');
     }
   }
 })();

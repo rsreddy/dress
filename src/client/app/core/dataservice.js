@@ -10,15 +10,27 @@
   function dataservice($http, $q, exception, logger) {
     var service = {
       getAttire: getAttire,
-      getMessageCount: getMessageCount
+      results: results
     };
 
     return service;
 
-    function getMessageCount() { return $q.when(72); }
+    function results(outfit) {
+      return $http.post('/api/attire', outfit)
+        .then(success)
+        .catch(fail);
 
-    function getAttire() {
-      return $http.get('/api/:temperature')
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for getAttire')(e);
+      }
+    }
+
+    function getAttire(temperature) {
+      return $http.get('/api/' + temperature)
         .then(success)
         .catch(fail);
 
